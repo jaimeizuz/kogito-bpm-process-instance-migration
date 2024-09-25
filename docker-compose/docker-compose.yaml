@@ -12,12 +12,11 @@ services:
       QUARKUS_DATASOURCE_PASSWORD: kogito-pass
       QUARKUS_DATASOURCE_DB_KIND: postgresql
       KOGITO_SERVICE_URL: 'http://localhost:8081'
-      KOGITO_JOBS_SERVICE_URL: 'http://localhost:8080'
       QUARKUS_FLYWAY_MIGRATE-AT-START: true
       QUARKUS_FLYWAY_OUT_OF_ORDER: true
       QUARKUS_FLYWAY_BASELINE_ON_MIGRATE: true
       QUARKUS_FLYWAY_BASELINE_VERSION: 0.0
-      QUARKUS_FLYWAY_LOCATIONS: "classpath:/db/migration,classpath:/db/jobs-service,classpath:/db/data-audit/postgresql"
+      QUARKUS_FLYWAY_LOCATIONS: "classpath:/db/migration,classpath:/db/data-audit/postgresql"
       QUARKUS_FLYWAY_TABLE: FLYWAY_RUNTIME_SERVICE
     depends_on:
       postgresql:
