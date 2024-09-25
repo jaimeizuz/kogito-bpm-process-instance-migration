@@ -1,0 +1,19 @@
+{
+    "name" : "Sample Process Migration Plan",
+    "processMigrationPlan" : {
+        "sourceProcessDefinition" : {
+            "processId" : "SampleProcess",
+            "processVersion" : "1.0"
+        },
+        "targetProcessDefinition" : {
+            "processId" : "SampleProcess",
+            "processVersion" : "2.0"
+        },
+        "nodeInstanceMigrationPlan" : [
+            {
+                "sourceNodeId" : "_3069C4BA-114A-4A9B-A39A-60916467AB47",
+                "targetNodeId" : "_E68FD23A-6200-4C26-9F4B-E12D6CE2A6AE"
+            }
+        ]
+    }
+}
