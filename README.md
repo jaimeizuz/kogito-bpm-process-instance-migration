@@ -20,11 +20,11 @@ Using the docker compose provided in ./docker-compose/docker-compose.yaml, we'll
 
 ### Steps to build the reproducer
 
-1. ``git clone -b 1.0.x https://github.com/jaimeizuz/kogito-bpmn-process-instance-migration.git``
+1. ``git clone -b 1.0 https://github.com/jaimeizuz/kogito-bpmn-process-instance-migration.git``
    
 2. ``mvn clean package -Pcontainer``
    
-3. ``git checkout main https://github.com/jaimeizuz/kogito-bpmn-process-instance-migration.git``
+3. ``git pull origin 2.0``
    
 4. ``mvn clean package -Pcontainer``
    
@@ -36,13 +36,13 @@ Using the docker compose provided in ./docker-compose/docker-compose.yaml, we'll
 ``--header 'Content-Type: application/json'`` \\\
 ``--data '{}'``
 
-6. List the active user tasks in the first deployment: \
+1. List the active user tasks in the first deployment: \
 ``curl --location 'http://localhost:8081/graphql?query=%7BUserTaskInstances(where%3A%7BprocessInstanceId%3A%7Bequal%3A%22d00e3fb7-d072-44fb-b3d4-4b2611d0b687%22%7D%7D%2CorderBy%3A%7BlastUpdate%3ADESC%7D)%7Bid%2Cname%2Cstate%2CactualOwner%2Cdescription%2ClastUpdate%2Cpriority%2CprocessId%2CprocessInstanceId%2Cendpoint%2Cinputs%2Coutputs%7D%7D'`` \\\
 ``--header 'Accept: application/json'`` \\\
 ``--header 'Content-Type: application/json'`` \\\
 ``--data '{"waitTime":"PT120S"}'``
 
-7. Migrate process instances from version 1 to version 2: \
+1. Migrate process instances from version 1 to version 2: \
 ``curl --location 'http://localhost:8081/management/processes/SampleProcess/migrate' `` \\\
 ``--header 'Accept: application/json'`` \\\
 ``--header 'Content-Type: application/json'`` \\\
@@ -51,7 +51,7 @@ Using the docker compose provided in ./docker-compose/docker-compose.yaml, we'll
 ``  "targetProcessVersion": "2.0"`` \\\
 ``}'``
 
-8. Finish the migration of one of the process instances by sending an empty PUT to the v2 deployment:
+1. Finish the migration of one of the process instances by sending an empty PUT to the v2 deployment:
 ``curl --location --request PUT 'http://localhost:8082/SampleProcess/<processInstanceId>'`` \\\
 ``--header 'Accept: application/json'`` \\\
 ``--header 'Content-Type: application/json'`` \\\
